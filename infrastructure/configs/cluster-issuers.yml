@@ -1,14 +1,88 @@
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
-  name: letsencrypt
+    name: letsencrypt
 spec:
-  acme:
-    server: https://acme-v02.api.letsencrypt.org/directory
-    email: ssl@phorge.fr
-    privateKeySecretRef:
-      name: letsencrypt
-    solvers:
-      - http01:
-          ingress:
-            class: nginx
+    acme:
+        server: https://acme-v02.api.letsencrypt.org/directory
+        email: ENC[AES256_GCM,data:Bm8XIWh6Weaa1x1LHA==,iv:LTgeNcsENEn2V20xfJqmY2r8S0ubMvvKZKeBhmnUyVg=,tag:D4WDDqHx2W+Ui+11pmtBug==,type:str]
+        privateKeySecretRef:
+            name: letsencrypt
+        solvers:
+            - dns01:
+                cloudflare:
+                    email: ENC[AES256_GCM,data:wYfThWfW6JTcX3QZrwZdHg3ecaAqE5s=,iv:c4v6D6UmQ0zKp8oKkVhYG/xJ4UoIIC1APUTs0RYJU+s=,tag:Mknfw4ulIg076x35IZtBWw==,type:str]
+                    apiTokenSecretRef:
+                        name: cloudflare-api-token-secret
+                        key: ENC[AES256_GCM,data:DeclxDzEq3qE,iv:qHutOTo8d8hU1hWW79NXzcptWYMqHzc9PSqYvLtDQgw=,tag:aesi0WB2sBn00/WESbbKWw==,type:str]
+              selector:
+                dnsZones:
+                    - phorge.fr
+                    - '*.phorge.fr'
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1dzqgndcckz7vshp69llrr3e5ypcy90xx3ufn0g9ymt3pgt9uzqaq3gn427
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBmRTJFYWtKTmNGd2xydmU2
+            eFdITHllc1VuS2FnT2p2dTNaM1JLakdhRGxNCnpjSkw2UDFtTEVkN3hHK3gwSjBY
+            bHAyeUxlTVVmakE0YU1Sajd5L0lhVmsKLS0tIDFmUEU5dC9yMzZCY04xWW1wazBS
+            QWRXZ1pLZDl0d05BWThwSGs0OWlKbm8KGAHT4mEUANeZKOPysk3jUI6HipvKsVtJ
+            Go9sxcF5CETMpiOgwzNDWXg2/X1L4jGfw5Er7pOTM9ewUUuPLcnfyw==
+            -----END AGE ENCRYPTED FILE-----
+        - recipient: age1ynlvjztfcz8zfsddwj2c9cjdk0w3x3nmezamdld67c2489yuvavs09xar8
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBGV1ErcFp6UGJIRHU0RXlq
+            TjQyUDRMQkhwZkFmcFl3MVNvWnlONnBzY0hrCjJWLzBhOHk1SzZ0a0ErRXVBL254
+            WG9JeXY1TWVPRGpsUUNXVnRpV0tNd0EKLS0tIGVaZkNEYjE1Z1M5cFl3WG5BK2Z0
+            Zm1GZGVzdzF1TlFLdUFyczNOV2p4TmcKsWHzZ6ChRHLzSFHuMuNauYrxz+2lD/Z9
+            lcZE3+wUQl3FCJNYG0qkReFl63oH68arG71jriFpou7MavIhfuZmng==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2025-06-11T23:10:11Z"
+    mac: ENC[AES256_GCM,data:Vr1VH+xzX9G7J9SL4eHbqvFOjXx9w9+iLZdUTAgs7vuniyhFIusbcbjF1K8ITBz3S07V0kdTW774QqtIQQvfQcQ/j6r7jOZey2fKFip0RUdX8jUgNfYq/QVwE+ba0gUXeZ10HqpMVk3sy8no9n0bVaq8qn918Drxc6BZsSqnOGQ=,iv:pfUKnj8mRRxqwIxUx1WGaA12oFfQ3cVVxv+hA2qH60E=,tag:mpj2t4GHWsn5XTLQdDjueQ==,type:str]
+    pgp: []
+    encrypted_regex: ^(email|password|secret_key|data|stringData|ca|crt|key|id|secret|token|aggregatorCA|serviceAccount|bootstraptoken|secretboxencryptionsecret|secretboxEncryptionSecret|clientSecret|clientId|external-dns.alpha.kubernetes.io/target)$
+    version: 3.9.1
+---
+apiVersion: v1
+kind: Secret
+metadata:
+    name: cloudflare-api-token-secret
+    namespace: cert-manager
+type: Opaque
+data:
+    api-token: ENC[AES256_GCM,data:o+DxEXgNF21pUjYfLW67h9V89AAGaUbWtOTk97SyXcAGzpFmgjLv6N0Xk96S6dBM71vztGK93RM=,iv:3oh9yOlquGN5HK8nePs1GBqpTfa8znFKfUPhV4YfYeQ=,tag:6iekB2IfR5N0TretJpM/8g==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1dzqgndcckz7vshp69llrr3e5ypcy90xx3ufn0g9ymt3pgt9uzqaq3gn427
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBmRTJFYWtKTmNGd2xydmU2
+            eFdITHllc1VuS2FnT2p2dTNaM1JLakdhRGxNCnpjSkw2UDFtTEVkN3hHK3gwSjBY
+            bHAyeUxlTVVmakE0YU1Sajd5L0lhVmsKLS0tIDFmUEU5dC9yMzZCY04xWW1wazBS
+            QWRXZ1pLZDl0d05BWThwSGs0OWlKbm8KGAHT4mEUANeZKOPysk3jUI6HipvKsVtJ
+            Go9sxcF5CETMpiOgwzNDWXg2/X1L4jGfw5Er7pOTM9ewUUuPLcnfyw==
+            -----END AGE ENCRYPTED FILE-----
+        - recipient: age1ynlvjztfcz8zfsddwj2c9cjdk0w3x3nmezamdld67c2489yuvavs09xar8
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBGV1ErcFp6UGJIRHU0RXlq
+            TjQyUDRMQkhwZkFmcFl3MVNvWnlONnBzY0hrCjJWLzBhOHk1SzZ0a0ErRXVBL254
+            WG9JeXY1TWVPRGpsUUNXVnRpV0tNd0EKLS0tIGVaZkNEYjE1Z1M5cFl3WG5BK2Z0
+            Zm1GZGVzdzF1TlFLdUFyczNOV2p4TmcKsWHzZ6ChRHLzSFHuMuNauYrxz+2lD/Z9
+            lcZE3+wUQl3FCJNYG0qkReFl63oH68arG71jriFpou7MavIhfuZmng==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2025-06-11T23:10:11Z"
+    mac: ENC[AES256_GCM,data:Vr1VH+xzX9G7J9SL4eHbqvFOjXx9w9+iLZdUTAgs7vuniyhFIusbcbjF1K8ITBz3S07V0kdTW774QqtIQQvfQcQ/j6r7jOZey2fKFip0RUdX8jUgNfYq/QVwE+ba0gUXeZ10HqpMVk3sy8no9n0bVaq8qn918Drxc6BZsSqnOGQ=,iv:pfUKnj8mRRxqwIxUx1WGaA12oFfQ3cVVxv+hA2qH60E=,tag:mpj2t4GHWsn5XTLQdDjueQ==,type:str]
+    pgp: []
+    encrypted_regex: ^(email|password|secret_key|data|stringData|ca|crt|key|id|secret|token|aggregatorCA|serviceAccount|bootstraptoken|secretboxencryptionsecret|secretboxEncryptionSecret|clientSecret|clientId|external-dns.alpha.kubernetes.io/target)$
+    version: 3.9.1
