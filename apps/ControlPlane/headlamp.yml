@@ -37,7 +37,7 @@ spec:
         - host: headlamp.core-k8s.phorge.fr
           paths:
             - path: /
-              type: ImplementationSpecific
+              type: Prefix
       tls:
         - secretName: headlamp-tls
           hosts:
