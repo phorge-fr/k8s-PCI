@@ -1,4 +1,4 @@
 creation_rules:
   - path_regex: .*.yml
-    encrypted_regex: ^(email|password|secret_key|data|stringData|ca|crt|key|id|secret|token|aggregatorCA|serviceAccount|bootstraptoken|secretboxencryptionsecret|secretboxEncryptionSecret|clientSecret|clientId|external-dns.alpha.kubernetes.io/target|adminPassword)$
+    encrypted_regex: ^(email|password|secret_key|data|stringData|ca|crt|key|id|secret|token|aggregatorCA|serviceAccount|bootstraptoken|secretboxencryptionsecret|secretboxEncryptionSecret|clientSecret|clientId|clientID|external-dns.alpha.kubernetes.io/target|adminPassword)$
     age: age1dzqgndcckz7vshp69llrr3e5ypcy90xx3ufn0g9ymt3pgt9uzqaq3gn427,age1ynlvjztfcz8zfsddwj2c9cjdk0w3x3nmezamdld67c2489yuvavs09xar8

@@ -1,0 +1,159 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+    name: dexidp
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1dzqgndcckz7vshp69llrr3e5ypcy90xx3ufn0g9ymt3pgt9uzqaq3gn427
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBXYUNxWkd3bFZac3pZVm5m
+            Q0E1MXcyakFMWmtKaW0yQ1JrTVNzR2UwUkRRClJvNWYzamFBeWJ3L3FzVjIvVjZG
+            V2FHM0hGM2h6MzlKREJJM3BkWThnM2MKLS0tIFh5Uktqb1lYdkg0WkZhb3ZvSXRo
+            ZEpuV09KWER4ZVVsSHhLelZVazloS3cKmfe1EPtosRZE+o+sT82zvC517MQKeFgg
+            5ek0Uo/OgOejOJQoMAi8aNYhyGWujObTUu+5/ZrNz4qwSBUo/Uk2OA==
+            -----END AGE ENCRYPTED FILE-----
+        - recipient: age1ynlvjztfcz8zfsddwj2c9cjdk0w3x3nmezamdld67c2489yuvavs09xar8
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBMVW9SeC8vRnhhRTQxMXpx
+            bkFYQzV4Tjd5YXkyOUZ1OEhhcjB1N2JEZWo0Clc5bjZGb1JieDYwMTRvVm9zRmgy
+            VCtVOXQvNFJIb05IWnlBUmprdWhtNjQKLS0tIHZlSjFBWTlHM1VuMjJHQmZZdmZF
+            aVdGV1p5K0xJc3ErYmNIUjNENExPODgKR1zIeplOwp7dNVX+cFdBiJc6qRW1CNEL
+            rGvQfLaEiUnU+jIx6CHvlwcXxybqvJb8A4MXgwQhyAjbqQiNkW29SA==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2025-06-12T19:25:13Z"
+    mac: ENC[AES256_GCM,data:di66A7bWssN57PdVys8fi5LrcOlfKg8IpW6F1VVEXVHujo7J/TKZQGbyLTv9rQDwl75WewLAG2X0k7ZQB5uvwNlDkzXuGyVQo7kEnvybguqCSBaipX4wKdRoCsTQ62DqzuRu9tF6GVjxrA9hOJCWyAY4YoL2P5vC0P7pXO2y2bc=,iv:cS48Oc2dkPMl+Xpp+7qvnwrIIpaxDwFmpkqRGKxle5Y=,tag:+r/gU0ReUCff1V62GN2Zgg==,type:str]
+    pgp: []
+    encrypted_regex: ^(email|password|secret_key|data|stringData|ca|crt|key|id|secret|token|aggregatorCA|serviceAccount|bootstraptoken|secretboxencryptionsecret|secretboxEncryptionSecret|clientSecret|clientId|clientID|external-dns.alpha.kubernetes.io/target|adminPassword)$
+    version: 3.9.1
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+    name: dexidp
+    namespace: dexidp
+spec:
+    interval: 1m0s
+    timeout: 1m0s
+    url: https://charts.dexidp.io
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1dzqgndcckz7vshp69llrr3e5ypcy90xx3ufn0g9ymt3pgt9uzqaq3gn427
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBXYUNxWkd3bFZac3pZVm5m
+            Q0E1MXcyakFMWmtKaW0yQ1JrTVNzR2UwUkRRClJvNWYzamFBeWJ3L3FzVjIvVjZG
+            V2FHM0hGM2h6MzlKREJJM3BkWThnM2MKLS0tIFh5Uktqb1lYdkg0WkZhb3ZvSXRo
+            ZEpuV09KWER4ZVVsSHhLelZVazloS3cKmfe1EPtosRZE+o+sT82zvC517MQKeFgg
+            5ek0Uo/OgOejOJQoMAi8aNYhyGWujObTUu+5/ZrNz4qwSBUo/Uk2OA==
+            -----END AGE ENCRYPTED FILE-----
+        - recipient: age1ynlvjztfcz8zfsddwj2c9cjdk0w3x3nmezamdld67c2489yuvavs09xar8
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBMVW9SeC8vRnhhRTQxMXpx
+            bkFYQzV4Tjd5YXkyOUZ1OEhhcjB1N2JEZWo0Clc5bjZGb1JieDYwMTRvVm9zRmgy
+            VCtVOXQvNFJIb05IWnlBUmprdWhtNjQKLS0tIHZlSjFBWTlHM1VuMjJHQmZZdmZF
+            aVdGV1p5K0xJc3ErYmNIUjNENExPODgKR1zIeplOwp7dNVX+cFdBiJc6qRW1CNEL
+            rGvQfLaEiUnU+jIx6CHvlwcXxybqvJb8A4MXgwQhyAjbqQiNkW29SA==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2025-06-12T19:25:13Z"
+    mac: ENC[AES256_GCM,data:di66A7bWssN57PdVys8fi5LrcOlfKg8IpW6F1VVEXVHujo7J/TKZQGbyLTv9rQDwl75WewLAG2X0k7ZQB5uvwNlDkzXuGyVQo7kEnvybguqCSBaipX4wKdRoCsTQ62DqzuRu9tF6GVjxrA9hOJCWyAY4YoL2P5vC0P7pXO2y2bc=,iv:cS48Oc2dkPMl+Xpp+7qvnwrIIpaxDwFmpkqRGKxle5Y=,tag:+r/gU0ReUCff1V62GN2Zgg==,type:str]
+    pgp: []
+    encrypted_regex: ^(email|password|secret_key|data|stringData|ca|crt|key|id|secret|token|aggregatorCA|serviceAccount|bootstraptoken|secretboxencryptionsecret|secretboxEncryptionSecret|clientSecret|clientId|clientID|external-dns.alpha.kubernetes.io/target|adminPassword)$
+    version: 3.9.1
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+    name: dex
+    namespace: dexidp
+spec:
+    chart:
+        spec:
+            chart: dex
+            sourceRef:
+                kind: HelmRepository
+                name: dexidp
+            version: '*'
+    interval: 1m0s
+    values:
+        ingress:
+            enabled: true
+            className: nginx
+            annotations:
+                cert-manager.io/cluster-issuer: letsencrypt
+            hosts:
+                - host: auth.phorge.fr
+                  paths:
+                    - path: /
+                      pathType: ImplementationSpecific
+            tls:
+                - secretName: dexidp-tls
+                  hosts:
+                    - auth.phorge.fr
+        config:
+            issuer: https://auth.phorge.fr/dex
+            storage:
+                type: memory
+            connectors:
+                - type: github
+                  id: ENC[AES256_GCM,data:oUPJk3Bp,iv:3pHeIAJqkXruBR5zXp06ckVz1OOWqUbCo7N2r5uF+To=,tag:9wEI4CKuZGUQrfFk7ymtjQ==,type:str]
+                  name: GitHub
+                  config:
+                    clientID: ENC[AES256_GCM,data:Qhjjgrm4Y+Wy6H/kz7hfaBBl70Y=,iv:TBSSQmJ/+lBjIHl6PUuZXbXD353Oerb5GKRttF0oU6E=,tag:8CNAexXxfCXrT6AjWqkZbw==,type:str]
+                    clientSecret: ENC[AES256_GCM,data:9QEuN52rIQJVbZAlsEsoMPbmcKlbmkbfJ8B0uCKJeMjMEbT6i61Pxg==,iv:3g278MJ0wVFn1ldUHjJCAW5teUB94GoGdrj0sUijy40=,tag:ZFzOpaLouIRG58/B8bTm9Q==,type:str]
+                    redirectURI: https://auth.phorge.fr/dex/callback
+                    scopes:
+                        - groups
+                        - email
+                    orgs:
+                        - name: phorge-fr
+                          teams:
+                            - admins
+                    loadAllGroups: true
+                    teamNameField: slug
+                    useLoginAsID: false
+            staticClients:
+                - id: ENC[AES256_GCM,data:0rVShhYz7g==,iv:S3Low/LBD0pRiZJ/93HhKW8SsnPTkhbfgYmABd5CI3k=,tag:P/rW0iuyy5JIu9e5AS0gwQ==,type:str]
+                  name: Grafana
+                  secret: ENC[AES256_GCM,data:sCDrciLt+oCzWIZHwJbDaq9YPYid8o72DrUXyRPTOsw=,iv:MOAwL05TkRsfYDNXNgvSbmJZn3rmWL6MKMX3vV1wMAo=,tag:TTpwAp8vzMAdQyXXT4Q/8g==,type:str]
+                  redirectURIs:
+                    - https://grafana.core-k8s.phorge.fr/login/generic_oauth
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1dzqgndcckz7vshp69llrr3e5ypcy90xx3ufn0g9ymt3pgt9uzqaq3gn427
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBXYUNxWkd3bFZac3pZVm5m
+            Q0E1MXcyakFMWmtKaW0yQ1JrTVNzR2UwUkRRClJvNWYzamFBeWJ3L3FzVjIvVjZG
+            V2FHM0hGM2h6MzlKREJJM3BkWThnM2MKLS0tIFh5Uktqb1lYdkg0WkZhb3ZvSXRo
+            ZEpuV09KWER4ZVVsSHhLelZVazloS3cKmfe1EPtosRZE+o+sT82zvC517MQKeFgg
+            5ek0Uo/OgOejOJQoMAi8aNYhyGWujObTUu+5/ZrNz4qwSBUo/Uk2OA==
+            -----END AGE ENCRYPTED FILE-----
+        - recipient: age1ynlvjztfcz8zfsddwj2c9cjdk0w3x3nmezamdld67c2489yuvavs09xar8
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBMVW9SeC8vRnhhRTQxMXpx
+            bkFYQzV4Tjd5YXkyOUZ1OEhhcjB1N2JEZWo0Clc5bjZGb1JieDYwMTRvVm9zRmgy
+            VCtVOXQvNFJIb05IWnlBUmprdWhtNjQKLS0tIHZlSjFBWTlHM1VuMjJHQmZZdmZF
+            aVdGV1p5K0xJc3ErYmNIUjNENExPODgKR1zIeplOwp7dNVX+cFdBiJc6qRW1CNEL
+            rGvQfLaEiUnU+jIx6CHvlwcXxybqvJb8A4MXgwQhyAjbqQiNkW29SA==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2025-06-12T19:25:13Z"
+    mac: ENC[AES256_GCM,data:di66A7bWssN57PdVys8fi5LrcOlfKg8IpW6F1VVEXVHujo7J/TKZQGbyLTv9rQDwl75WewLAG2X0k7ZQB5uvwNlDkzXuGyVQo7kEnvybguqCSBaipX4wKdRoCsTQ62DqzuRu9tF6GVjxrA9hOJCWyAY4YoL2P5vC0P7pXO2y2bc=,iv:cS48Oc2dkPMl+Xpp+7qvnwrIIpaxDwFmpkqRGKxle5Y=,tag:+r/gU0ReUCff1V62GN2Zgg==,type:str]
+    pgp: []
+    encrypted_regex: ^(email|password|secret_key|data|stringData|ca|crt|key|id|secret|token|aggregatorCA|serviceAccount|bootstraptoken|secretboxencryptionsecret|secretboxEncryptionSecret|clientSecret|clientId|clientID|external-dns.alpha.kubernetes.io/target|adminPassword)$
+    version: 3.9.1
